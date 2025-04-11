@@ -14,27 +14,28 @@ function App() {
   return (
     <div className="relative overflow-hidden bg-white">
       <MenuBar />
-      <div className="flex h-[95vh] flex-col place-content-between bg-emerald-500 sm:pt-24 lg:pt-40">
-        <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-          <div className="flex justify-between gap-8">
-            <div className="content-center text-left">
-              <h1 className="font-poppins text-8xl uppercase text-white">
+      <div className="flex h-[95vh] flex-col justify-between bg-emerald-500 sm:pt-24 lg:pt-40">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col-reverse items-center gap-8 md:flex-row md:justify-between">
+            <div className="text-center md:text-left">
+              <h1 className="font-poppins text-5xl uppercase text-white sm:text-6xl lg:text-8xl">
                 Michel Victor
               </h1>
-              <h3 className="font-poppins text-3xl text-white">
+              <h3 className="font-poppins text-xl text-white sm:text-2xl lg:text-3xl">
                 Javascript / Typescript. React | Next | Node | Nest
               </h3>
-              <h5 className="mt-8 font-poppins text-xl text-white">
+              <h5 className="mt-4 font-poppins text-base text-white sm:mt-8 sm:text-xl">
                 Rio de Janeiro, Brasil
               </h5>
             </div>
             <div>
-              <img src="public/gpt-mario1.png" alt="" className="size-96" />
+              <img
+                src="/gpt-mario1.png"
+                alt=""
+                className="w-48 sm:w-72 lg:w-96"
+              />
             </div>
           </div>
-        </div>
-        <div className="mx-auto">
-          <ArrowDownToDot className="mb-8 animate-bounce text-white" />
         </div>
       </div>
       <Session className="flex bg-white" textColor="black">
@@ -48,62 +49,55 @@ function App() {
         />
 
         <SessionHeading subtitle="saiba mais" title="Sobre mim" />
-        <div className="flex">
-          <div className="w-3/5">
-            <h5 className="mb-8 text-4xl font-bold uppercase">
+        <div className="flex flex-col gap-8 lg:flex-row">
+          <div className="lg:w-3/5">
+            <h5 className="mb-4 text-3xl font-bold uppercase sm:text-4xl">
               Sou o Michel Victor!
             </h5>
-            <p className="text-lg">
-              Desenvolvedor do Rio de Janeiro com foco em front-end e paixão por
-              UI/UX. Tenho experiência sólida em JavaScript, trabalhando com
-              tecnologias como ReactJS, NextJS, TypeScript, NodeJS e NestJS. Meu
-              background em fotografia, audiovisual e design complementa minha
-              atuação técnica, trazendo um olhar criativo e centrado na
-              experiência do usuário.
+            <p className="text-base sm:text-lg">
+              Desenvolvedor do Rio de Janeiro com foco em front-end...
             </p>
           </div>
-          <div className="w-2/5">
-            <div>
-              <img
-                src="public/michel_boneco.png"
-                alt=""
-                className="h-auto w-72"
-              />
-            </div>
+          <div className="mx-auto lg:w-2/5">
+            <img
+              src="/michel_boneco.png"
+              alt=""
+              className="h-auto w-48 sm:w-64 lg:w-72"
+            />
           </div>
         </div>
-        <div className="flex justify-between ">
-          {personalData.map((dado, i) => {
-            return (
-              <div key={i}>
-                <h3 className="text-xl uppercase">{dado.dado}</h3>
-                <h3 className="text-2xl font-bold uppercase">{dado.descr}</h3>
-              </div>
-            )
-          })}
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {personalData.map((dado, i) => (
+            <div key={i}>
+              <h3 className="text-base uppercase sm:text-xl">{dado.dado}</h3>
+              <h3 className="text-lg font-bold uppercase sm:text-2xl">
+                {dado.descr}
+              </h3>
+            </div>
+          ))}
         </div>
       </Session>
       <Session className="bg-gray-200" textColor="black">
         <SessionHeading subtitle="minha" title="Experiência profissional" />
-        <div className="flex">
-          <div className="flex h-screen w-1/2 flex-col flex-wrap">
-            {experience.map((experience, i) => {
-              return (
-                <div
-                  key={i}
-                  className="flex flex-col gap-4 border-l-4 border-green-600 pb-12 pl-4"
-                >
-                  <h3 className="text-3xl font-bold">{experience.cargo}</h3>
-                  <h5 className="text-xl">
-                    {experience.empresa}{' '}
-                    <span className="text-slate-500">
-                      {experience.inicio} - {experience.fim}
-                    </span>
-                  </h5>
-                  <p className="text-2xl">{experience.descr}</p>
-                </div>
-              )
-            })}
+        <div className="w-full">
+          <div className="flex flex-col gap-8">
+            {experience.map((experience, i) => (
+              <div
+                key={i}
+                className="flex flex-col gap-2 border-l-4 border-green-600 pl-4"
+              >
+                <h3 className="text-2xl font-bold sm:text-3xl">
+                  {experience.cargo}
+                </h3>
+                <h5 className="text-base sm:text-xl">
+                  {experience.empresa}{' '}
+                  <span className="text-slate-500">
+                    {experience.inicio} - {experience.fim}
+                  </span>
+                </h5>
+                <p className="text-lg sm:text-2xl">{experience.descr}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Session>
@@ -115,39 +109,36 @@ function App() {
           colorTitle="text-white"
         />
         <div className="flex">
-          <div className="flex flex-wrap">
-            {skills.map((skill, i) => {
-              return (
-                <div key={i} className="flex w-1/2 flex-col gap-4 pb-12 pl-4">
-                  <div className="flex  justify-between">
-                    <h3 className="text-2xl font-bold text-white">
-                      {skill.tech}
-                    </h3>
-                    <h3 className="text-2xl font-bold text-white">
-                      {skill.percentage}%
-                    </h3>
-                  </div>
-                  <ProgressBar percentage={skill.percentage} />
+          <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2">
+            {skills.map((skill, i) => (
+              <div key={i} className="flex flex-col gap-2">
+                <div className="flex justify-between">
+                  <h3 className="text-lg font-bold text-white sm:text-2xl">
+                    {skill.tech}
+                  </h3>
+                  <h3 className="text-lg font-bold text-white sm:text-2xl">
+                    {skill.percentage}%
+                  </h3>
                 </div>
-              )
-            })}
+                <ProgressBar percentage={skill.percentage} />
+              </div>
+            ))}
           </div>
         </div>
       </Session>
       <Session className="flex bg-white" textColor="black">
         <SessionHeading subtitle="meus" title="Projetos pessoais" />
-        <div className="grid w-full grid-cols-3 justify-items-stretch gap-4">
-          {projects.map((project, i) => {
-            return (
-              <div key={i} className="flex gap-4 bg-gray-400 p-8">
-                <div className="flex-row">
-                  <h3 className="text-2xl font-bold">{project.name}</h3>
-                  <h5>{project.stack}</h5>
-                  <p>{project.descr}</p>
-                </div>
-              </div>
-            )
-          })}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, i) => (
+            <div
+              key={i}
+              className="flex flex-col gap-2 bg-gray-400 p-4 sm:p-6 lg:p-8"
+            >
+              <h3 className="text-lg font-bold sm:text-2xl">{project.name}</h3>
+              <h5>{project.stack}</h5>
+              <p>{project.descr}</p>
+            </div>
+          ))}
         </div>
       </Session>
     </div>
