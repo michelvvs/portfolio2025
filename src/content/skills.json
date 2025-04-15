@@ -1,36 +1,68 @@
 
   [
     {
-      "tech": "React",
-      "percentage": 25
-    },
-    {
-      "tech": "React",
+      "tech": "HTML",
       "percentage": 95
     },
     {
-      "tech": "React",
-      "percentage": 25
+      "tech": "CSS",
+      "percentage": 95
     },
     {
-      "tech": "React",
-      "percentage": 25
+      "tech": "Javascript",
+      "percentage": 95
     },
     {
-      "tech": "React",
-      "percentage": 25
+      "tech": "Typescript",
+      "percentage": 80
     },
     {
-      "tech": "React",
-      "percentage": 25
+      "tech": "ReactJS",
+      "percentage": 80
     },
     {
-      "tech": "React",
-      "percentage": 25
+      "tech": "NexJS",
+      "percentage": 75
     },
     {
-      "tech": "React",
-      "percentage": 25
+      "tech": "Tailwind",
+      "percentage": 70
+    },
+    {
+      "tech": "GitHub",
+      "percentage": 70
+    },
+    {
+      "tech": "Storybook",
+      "percentage": 60
+    },
+    {
+      "tech": "Rest API",
+      "percentage": 75
+    },
+    {
+      "tech": "NodeJS",
+      "percentage": 80
+    },
+    {
+      "tech": "NestJS",
+      "percentage": 60
+    },
+    {
+      "tech": "Zustand",
+      "percentage": 75
+    },
+    {
+      "tech": "mobile/React Native",
+      "percentage": 60
+    },
+    {
+      "tech": "A.I.",
+      "percentage": 40
+    },
+    {
+      "tech": "capacidade de se auto definir",
+      "percentage": 40
     }
 
   ]

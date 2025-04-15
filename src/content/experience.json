@@ -1,39 +1,39 @@
 
   [
     {
-      "cargo": "Sr. Font End Developer",
+      "cargo": "Desenvolvedor Front-end Pleno",
       "empresa": "Epimed Solutions",
       "inicio": "04/2023",
       "fim": "atualmente",
-      "descr": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure."
+      "descr": "Criação e manutenção de sistemas em React e NextJS (javascript/typescript) na área de HealthTech, consumindo APIs do time de back-end com documentação em swagger e autenticação de token JWT com SSO da empresa. Criação de Design System em React, Storybook, ChadCN/RadixUI e Tailwind. Outras tecnologias utilizadas: Vite, ReactQuery, Lint, prettier, React Router, Zustand, gitHub."
     },
     {
-      "cargo": "Sr. Font End Developer",
-      "empresa": "Epimed Solutions",
-      "inicio": "04/2023",
-      "fim": "atualmente",
-      "descr": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure."
+      "cargo": "Desenvolvedor Fullstack Pleno",
+      "empresa": "Centro de Inteligência Epidemiológica (SMS)",
+      "inicio": "05/2022",
+      "fim": "07/2024",
+      "descr": "Criação de soluções para a saúde pública. Criação de back end que consome diariamente uma API do SUS para alimentação de uma base de dados PostGreSQL com dados de exames médicos. Criação de Back-end e Front-end para a exibição dos dados coletados. Front em ReactJS e back em NodeJS/Express. Plotagem de gráficos com ApexCharts e consumo de API com Express.  Outras tecnologias utilizadas: Lint, prettier, React Router, Zustand, Puppeteer, BitBucket."
     },
     {
-      "cargo": "Sr. Font End Developer",
-      "empresa": "Epimed Solutions",
-      "inicio": "04/2023",
-      "fim": "atualmente",
-      "descr": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure."
+      "cargo": "Desenvolvedor Front-end Pleno",
+      "empresa": "HEAP Engenharia de Software",
+      "inicio": "04/2022",
+      "fim": "04/2023",
+      "descr": "Criação e manutenção de ambientes em ReactJS com foco em e-commerces. Manutenção em e-commerces de redes grandes. Área de carrinho, checkout, vitrine de produtos, etc. Criação de solução para igrejas em um front em NextJS e back em NestJS. Outras tecnologias utilizadas: Lint, prettier, React Router, Zustand, ReduxJS, Redux Toolkit, Prisma ORM, gitHub."
     },
     {
-      "cargo": "Sr. Font End Developer",
-      "empresa": "Epimed Solutions",
-      "inicio": "04/2023",
-      "fim": "atualmente",
-      "descr": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure."
+      "cargo": "Desenvolvedor Front-end Junior",
+      "empresa": "RioSaúde - Empresa Pública de Saúde do RJ",
+      "inicio": "10/2021",
+      "fim": "03/2022",
+      "descr": "Criação de sistemas em React para empresa pública do setor de Saúde do Rio de Janeiro. Criação de sistema para processos seletivos da empresa em Javascript com PHP. Outras tecnologias utilizadas: Styled-components, JQuery, bootstrap, AntDesign, gitHub."
     },
     {
-      "cargo": "Sr. Font End Developer",
+      "cargo": "Designer/ Web - Editora Intrínseca",
       "empresa": "Epimed Solutions",
-      "inicio": "04/2023",
-      "fim": "atualmente",
-      "descr": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure."
+      "inicio": "01/2021",
+      "fim": "09/2021",
+      "descr": "Desenvolvimento de peças para mídias sociais e propagandas gráficas, criação de landing pages e manutenção de site em wordpress e react."
     }
   ]
 

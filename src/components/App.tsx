@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="relative overflow-hidden bg-white">
       <MenuBar />
-      <div className="flex h-[95vh] flex-col justify-between bg-emerald-500 sm:pt-24 lg:pt-40">
+      <div className="flex h-[95vh] flex-col justify-between bg-emerald-500 pt-24 lg:pt-40">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col-reverse items-center gap-8 md:flex-row md:justify-between">
             <div className="text-center md:text-left">
@@ -55,7 +55,14 @@ function App() {
               Sou o Michel Victor!
             </h5>
             <p className="text-base sm:text-lg">
-              Desenvolvedor do Rio de Janeiro com foco em front-end...
+              Sou Michel Victor, desenvolvedor do Rio de Janeiro apaixonado por
+              tecnologia, design e tudo que envolve código. Tenho experiência
+              sólida com JavaScript e seu ecossistema — incluindo Node.js,
+              TypeScript, React, Next.js e NestJS — sempre buscando unir
+              performance, boas práticas e um olhar atento à experiência do
+              usuário. Além da programação, trago uma bagagem criativa nas áreas
+              de fotografia, audiovisual e design, o que me ajuda a entregar
+              soluções completas, funcionais e visualmente atrativas.
             </p>
           </div>
           <div className="mx-auto lg:w-2/5">
@@ -86,19 +93,27 @@ function App() {
                 key={i}
                 className="flex flex-col gap-2 border-l-4 border-green-600 pl-4"
               >
-                <h3 className="text-2xl font-bold sm:text-3xl">
+                <h3 className="text-xl font-bold sm:text-2xl">
                   {experience.cargo}
                 </h3>
-                <h5 className="text-base sm:text-xl">
+                <h5 className="text-base sm:text-lg">
                   {experience.empresa}{' '}
                   <span className="text-slate-500">
                     {experience.inicio} - {experience.fim}
                   </span>
                 </h5>
-                <p className="text-lg sm:text-2xl">{experience.descr}</p>
+                <p className="text-lg sm:text-lg">{experience.descr}</p>
               </div>
             ))}
           </div>
+        </div>
+        <div className=" flex w-full justify-center">
+          <a
+            href="curriculoMichel2025-04.pdf"
+            className="my-8 w-60 border-4 border-black p-4 text-center"
+          >
+            Baixar meu currículo
+          </a>
         </div>
       </Session>
       <Session className="bg-emerald-900" textColor="black">
@@ -126,7 +141,7 @@ function App() {
           </div>
         </div>
       </Session>
-      <Session className="flex bg-white" textColor="black">
+      {/* <Session className="flex bg-white" textColor="black">
         <SessionHeading subtitle="meus" title="Projetos pessoais" />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
@@ -140,7 +155,26 @@ function App() {
             </div>
           ))}
         </div>
-      </Session>
+      </Session> */}
+
+      <div className="flex-col place-content-between bg-black py-4 font-poppins">
+        <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
+          <div className="m-4 flex justify-between">
+            <div className="font-poppins font-bold uppercase text-white"></div>
+            <div className="font-poppins font-bold uppercase text-white">
+              Feito por{' '}
+              <a
+                href="https://www.linkedin.com/in/michelvvs/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-green-400 underline"
+              >
+                Michel Victor
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
