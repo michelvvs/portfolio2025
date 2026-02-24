@@ -1,3 +1,5 @@
+"use client"
+
 import { ArrowDownToDot } from 'lucide-react'
 import Session from './Session'
 import MenuBar from './MenuBar'
