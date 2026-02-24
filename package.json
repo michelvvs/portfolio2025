@@ -1,6 +1,6 @@
 {
-  "name": "reactjs-vite-tailwindcss-boilerplate",
-  "description": "This is a boilerplate build with Vite, React 18, TypeScript, Vitest, Testing Library, TailwindCSS 3, Eslint and Prettier.",
+  "name": "portfolio2025",
+  "description": "Portfólio pessoal 2025 de Michel Victor construído com React, TypeScript e TailwindCSS.",
   "version": "0.1.0",
   "private": true,
   "type": "module",

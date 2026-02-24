@@ -1,80 +1,54 @@
-![reactjs-vite-tailwindcss-boilerplate](https://user-images.githubusercontent.com/16243531/217138979-b854309c-4742-4275-a705-f9fec5158217.jpg)
+# 🚀 Portfólio 2025 - Michel Victor
 
-# React Tailwindcss Boilerplate build with Vite
+Bem-vindo ao meu portfólio pessoal de 2025. Este projeto apresenta minha trajetória, habilidades técnicas e experiências profissionais como desenvolvedor Front-end.
 
-This is a boilerplate build with Vite, React 18, TypeScript, Vitest, Testing Library, TailwindCSS 3, Eslint and Prettier.
+## 👤 Sobre Mim
+- **Nome:** Michel Victor
+- **Localização:** Rio de Janeiro, RJ
+- **Foco:** Desenvolvimento Front-end com foco em performance, escalabilidade e design systems.
 
-## What is inside?
+## 🛠️ Tecnologias Utilizadas
+Este projeto foi desenvolvido utilizando tecnologias modernas para garantir uma experiência rápida e robusta:
+- [Vite](https://vitejs.dev) - Ferramenta de build rápida.
+- [ReactJS](https://reactjs.org) - Biblioteca para interfaces de usuário.
+- [TypeScript](https://www.typescriptlang.org) - Tipagem estática para maior segurança.
+- [Tailwindcss](https://tailwindcss.com) - Estilização moderna e responsiva.
+- [Motion](https://motion.dev/) - Animações fluidas e interativas.
+- [Zustand](https://zustand-demo.pmnd.rs/) - Gerenciamento de estado eficiente.
+- [Vitest](https://vitest.dev) & [Testing Library](https://testing-library.com) - Garantia de qualidade através de testes.
 
-This project uses many tools like:
+## 📚 Estrutura de Conteúdo
+O portfólio é alimentado dinamicamente por arquivos JSON localizados em `src/content/`:
+- **Experiência Profissional:** Atuações em empresas como Epimed Solutions (HealthTech), SMS/RJ (Saúde Pública) e HEAP Engenharia (E-commerce).
+- **Habilidades:** Proficiência em React, Next.js, Node.js, TypeScript, Design Systems (Storybook, RadixUI) e mais.
+- **Projetos:** Galeria de projetos desenvolvidos.
 
-- [Vite](https://vitejs.dev)
-- [ReactJS](https://reactjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Vitest](https://vitest.dev)
-- [Testing Library](https://testing-library.com)
-- [Tailwindcss](https://tailwindcss.com)
-- [Eslint](https://eslint.org)
-- [Prettier](https://prettier.io)
+## 🚀 Como Executar o Projeto
 
-## Getting Started
-
-### Install
-
-Create the project.
-
-```bash
-pnpm dlx degit joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate my-app
-```
-
-Access the project directory.
-
-```bash
-cd my-app
-```
-
-Install dependencies.
-
+### Instalação
+Após clonar o repositório, instale as dependências:
 ```bash
 pnpm install
 ```
 
-Serve with hot reload at <http://localhost:5173>.
-
+### Desenvolvimento
+Para rodar em modo de desenvolvimento com hot reload:
 ```bash
 pnpm run dev
 ```
+Acesse: <http://localhost:5173>
 
-### Lint
-
-```bash
-pnpm run lint
-```
-
-### Typecheck
-
-```bash
-pnpm run typecheck
-```
-
-### Build
-
+### Build de Produção
+Para gerar a versão otimizada para deploy:
 ```bash
 pnpm run build
 ```
 
-### Test
+### Testes e Qualidade
+- `pnpm run test`: Executa os testes unitários.
+- `pnpm run lint`: Verifica padrões de código com Eslint.
+- `pnpm run typecheck`: Verifica a integridade dos tipos TypeScript.
 
-```bash
-pnpm run test
-```
+## 📄 Licença
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-View and interact with your tests via UI.
-
-```bash
-pnpm run test:ui
-```
-
-## License
-
-This project is licensed under the MIT License.
