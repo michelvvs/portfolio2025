@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react"
 import { useEffect, useState, use } from "react"
 import { useEditor, EditorContent } from '@tiptap/react'
+import { BubbleMenu, FloatingMenu } from '@tiptap/react/menus'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
 
@@ -63,12 +64,18 @@ export default function EditorPage({ params }: { params: Promise<{ slug: string 
 
     const data = await res.json()
     if (data.url) {
-      editor?.chain().focus().setImage({ src: data.url }).run()
+      const altText = window.prompt("Digite uma descrição curta para a imagem (opcional)") || ""
+      editor?.chain().focus().setImage({ src: data.url, alt: altText, title: altText }).run()
+      
+      if (altText) {
+        editor?.chain().focus().insertContent(`<p style="text-align: center; font-size: 0.875rem; color: #6b7280; font-style: italic; margin-top: 0.5rem;">${altText}</p>`).run()
+      }
     }
   }
 
   const handleSave = async () => {
-    if (!title || !editor?.getHTML()) return alert("Título e Conteúdo são obrigatórios")
+    const contentHTML = editor?.getHTML() || ""
+    if (!title || !contentHTML) return alert("Título e Conteúdo são obrigatórios")
     
     setIsSaving(true)
     const url = isNew ? '/api/posts' : `/api/posts/${slug}`
@@ -76,14 +83,24 @@ export default function EditorPage({ params }: { params: Promise<{ slug: string 
 
     const generatedSlug = slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
 
+    let finalCoverImage = coverImage
+    if (!finalCoverImage) {
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(contentHTML, 'text/html')
+      const firstImg = doc.querySelector('img')
+      if (firstImg && firstImg.src) {
+        finalCoverImage = firstImg.src
+      }
+    }
+
     const res = await fetch(url, {
       method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         title,
         slug: generatedSlug,
-        content: editor.getHTML(),
-        cover_image: coverImage
+        content: contentHTML,
+        cover_image: finalCoverImage
       })
     })
 
@@ -145,55 +162,62 @@ export default function EditorPage({ params }: { params: Promise<{ slug: string 
         </div>
       </div>
 
-      {/* Toolbar do TipTap */}
-      <div className="flex items-center gap-2 mb-6 sticky top-0 bg-white/90 backdrop-blur-sm z-10 py-3 border-b border-gray-100">
-        <button
-          onClick={() => editor?.chain().focus().toggleBold().run()}
-          className={`p-2 rounded hover:bg-gray-100 transition ${editor?.isActive('bold') ? 'bg-gray-200 text-black' : 'text-gray-500'}`}
-          title="Negrito"
-        >
-          B
-        </button>
-        <button
-          onClick={() => editor?.chain().focus().toggleItalic().run()}
-          className={`p-2 rounded hover:bg-gray-100 italic transition ${editor?.isActive('italic') ? 'bg-gray-200 text-black' : 'text-gray-500'}`}
-          title="Itálico"
-        >
-          I
-        </button>
-        <div className="w-px h-6 bg-gray-300 mx-2"></div>
-        <button
-          onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
-          className={`p-2 rounded font-bold hover:bg-gray-100 transition ${editor?.isActive('heading', { level: 2 }) ? 'bg-gray-200 text-black' : 'text-gray-500'}`}
-          title="Título (H2)"
-        >
-          H2
-        </button>
-        <button
-          onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
-          className={`p-2 rounded font-bold hover:bg-gray-100 transition ${editor?.isActive('heading', { level: 3 }) ? 'bg-gray-200 text-black' : 'text-gray-500'}`}
-          title="Subtítulo (H3)"
-        >
-          H3
-        </button>
-        <div className="w-px h-6 bg-gray-300 mx-2"></div>
-        <div className="relative">
-          <input 
-            type="file" 
-            id="image-upload" 
-            className="hidden" 
-            accept="image/*" 
-            onChange={handleImageUpload} 
-          />
-          <label 
-            htmlFor="image-upload" 
-            className="cursor-pointer text-gray-500 hover:text-black bg-gray-50 hover:bg-gray-100 px-3 py-1.5 rounded-md text-sm font-medium transition flex items-center gap-2 border border-gray-200"
+      {/* Bubble Menu para Formatação Rápida (Estilo Medium) */}
+      {editor && (
+        <BubbleMenu editor={editor} className="flex items-center bg-gray-900 text-white rounded-lg px-2 py-1 shadow-xl gap-1">
+          <button
+            onClick={() => editor.chain().focus().toggleBold().run()}
+            className={`p-1.5 rounded hover:bg-gray-700 transition ${editor.isActive('bold') ? 'text-green-400 bg-gray-800' : 'text-gray-300'}`}
+            title="Negrito"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-            Inserir Imagem
-          </label>
-        </div>
-      </div>
+            <strong className="font-serif">B</strong>
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+            className={`p-1.5 rounded hover:bg-gray-700 italic transition ${editor.isActive('italic') ? 'text-green-400 bg-gray-800' : 'text-gray-300'}`}
+            title="Itálico"
+          >
+            <span className="font-serif">I</span>
+          </button>
+          <div className="w-px h-5 bg-gray-700 mx-1"></div>
+          <button
+            onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+            className={`p-1.5 text-sm font-bold rounded hover:bg-gray-700 transition ${editor.isActive('heading', { level: 2 }) ? 'text-green-400 bg-gray-800' : 'text-gray-300'}`}
+            title="Título Secundário"
+          >
+            H2
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+            className={`p-1.5 text-sm font-bold rounded hover:bg-gray-700 transition ${editor.isActive('heading', { level: 3 }) ? 'text-green-400 bg-gray-800' : 'text-gray-300'}`}
+            title="Título Terciário"
+          >
+            H3
+          </button>
+        </BubbleMenu>
+      )}
+
+      {/* Floating Menu para Add Arquivos / Nova linha */}
+      {editor && (
+        <FloatingMenu editor={editor} className="flex ml-[-4rem]">
+          <div className="relative group">
+            <input 
+              type="file" 
+              id="image-upload-float" 
+              className="hidden" 
+              accept="image/*" 
+              onChange={handleImageUpload} 
+            />
+            <label 
+              htmlFor="image-upload-float" 
+              className="inline-flex items-center justify-center cursor-pointer text-gray-400 hover:text-green-600 border border-gray-300 rounded-full w-10 h-10 transition hover:bg-gray-50 shadow-sm bg-white"
+              title="Inserir Nova Imagem"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </label>
+          </div>
+        </FloatingMenu>
+      )}
 
       <div className="pb-32">
         <EditorContent editor={editor} />

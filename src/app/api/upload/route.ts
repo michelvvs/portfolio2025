@@ -31,13 +31,17 @@ export async function POST(request: NextRequest) {
     console.error("Erro ao criar diretório", err)
   }
 
-  // Sanitizar o nome do arquivo para evitar problemas de filesystem
-  const sanitizedName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '')
-  const timestampName = `${Date.now()}-${sanitizedName}`
+  // Sanitizar nome e trocar extensão para webp
+  const sanitizedName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '').split('.')[0]
+  const timestampName = `${Date.now()}-${sanitizedName}.webp`
   const filePath = join(uploadDir, timestampName)
 
-  await writeFile(filePath, buffer)
+  // Processar imagem com sharp (max 1200px X webp otimizado 80%)
+  const sharp = (await import('sharp')).default
+  await sharp(buffer)
+    .resize({ width: 1200, withoutEnlargement: true })
+    .webp({ quality: 80 })
+    .toFile(filePath)
 
-  // Retornar o caminho acessível publicamente pelo front-end
   return NextResponse.json({ url: `/uploads/${folderName}/${timestampName}` })
 }
